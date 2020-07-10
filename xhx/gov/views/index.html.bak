@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/bootstrap-table/bootstrap-table.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/bootstrap-select/css/bootstrap-select.css">
+    <title>{{.title}}</title>
+</head>
+<body>
+    <div class="container">
+        <table id="dataGrid">
+            <thead>
+                
+            </thead>
+        </table>
+    </div>
+</body>
+<script type="text/javascript" src="/assets/popper/popper.min.js"></script>
+<script type="text/javascript" src="/assets/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/assets/bootstrap-table/bootstrap-table.min.js"></script>
+<script type="text/javascript" src="/assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript" src="/assets/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="/assets/bootstrap-select/js/i18n/defaults-zh_CN.min.js"></script>
+<script type="text/javascript" src="/assets/popper/bootstrap_popper.min.js"></script>
+
+<script type="text/javascript">
+    // console.log({{.data}});
+    var data = {{.data}};
+    var columns =  [{
+        field: 'dept',
+        title: data[0][0],
+        sortable: true,
+    }, {
+        field: 'position',
+        title: data[0][1],
+        sortable: true,
+    }, {
+        field: 'examtype',
+        title: data[0][2],
+        sortable: true,
+    }, {
+        field: 'need',
+        title: data[0][3],
+        sortable: true,
+    }, {
+        field: 'total',
+        title: data[0][4],
+        sortable: true,
+    }, {
+        field: 'pass',
+        title: data[0][5],
+        sortable: true,
+    }, {
+        field: 'failed',
+        title: data[0][6],
+        sortable: true,
+    }]
+
+    var res = [];
+    for (var i=0; i<data.length; i++) {
+        if (i == 0) { continue; }
+        var tmp = {
+            'dept': data[i][0],
+            'position': data[i][1],
+            'examtype': data[i][2],
+            'need': data[i][3],
+            'total': data[i][4],
+            'pass': data[i][5],
+            'failed': data[i][6],
+        }
+        res.push(tmp)
+    }
+
+    $(document).ready(function(){
+        $('#dataGrid').bootstrapTable({
+            columns: columns,
+            data: res,
+            search: true,
+            sortable: true,
+            pagination: true,
+            pageSize: 12,
+            pageList: [12, 100, 200, 500, 1000],
+            paginationShowPageGo: true,
+            paginationUseBSSelect: true,
+            classes: 'table table-bordered table-hover',
+            onSort: function (name, order) {
+                console.log(name, order)
+            },
+        })
+    })
+    
+    function useBootstrap() {
+
+    }
+</script>
+</html>

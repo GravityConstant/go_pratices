@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+{{template "public/head.html"}}
+
+<table id="dataGrid">
+            <thead>
+                
+            </thead>
+        </table>
+        
+{{template "public/foot.html"}}
+
+<script type="text/javascript">
+    // console.log({{.data}});
+    var data = {{.data}};
+    var columns =  [{
+        field: 'dept',
+        title: data[0][0],
+        sortable: true,
+    }, {
+        field: 'position',
+        title: data[0][1],
+        sortable: true,
+    }, {
+        field: 'examtype',
+        title: data[0][2],
+        sortable: true,
+    }, {
+        field: 'need',
+        title: data[0][3],
+        sortable: true,
+    }, {
+        field: 'total',
+        title: data[0][4],
+        sortable: true,
+    }, {
+        field: 'pass',
+        title: data[0][5],
+        sortable: true,
+    }, {
+        field: 'failed',
+        title: data[0][6],
+        sortable: true,
+    }]
+
+    var res = [];
+    for (var i=0; i<data.length; i++) {
+        if (i == 0) { continue; }
+        var tmp = {
+            'dept': data[i][0],
+            'position': data[i][1],
+            'examtype': data[i][2],
+            'need': data[i][3],
+            'total': data[i][4],
+            'pass': data[i][5],
+            'failed': data[i][6],
+        }
+        res.push(tmp)
+    }
+
+    $(document).ready(function(){
+        $('#dataGrid').bootstrapTable({
+            columns: columns,
+            data: res,
+            search: true,
+            sortable: true,
+            pagination: true,
+            pageSize: 12,
+            pageList: [12, 100, 200, 500, 1000],
+            paginationShowPageGo: true,
+            paginationUseBSSelect: true,
+            classes: 'table table-bordered table-hover',
+            onSort: function (name, order) {
+                console.log(name, order)
+            },
+        })
+    })
+    
+    function useBootstrap() {
+
+    }
+</script>
+
+</html>

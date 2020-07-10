@@ -1,0 +1,5 @@
+start NWAY400.exe failed. %!s(MISSING)
+exit status 1stop NWAY400.exe failed. %!s(MISSING)
+exit status 128start NWAY400.exe failed. %!s(MISSING)
+exit status 1stop NWAY400.exe failed. %!s(MISSING)
+exit status 128

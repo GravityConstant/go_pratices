@@ -1,0 +1,4 @@
+Channels orchestrate muxtexes serialize
+Cgo is not go
+Errors are values
+Don't panic

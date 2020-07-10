@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package my_rpc_proto;
+
+// The HelloServer service definition.
+service HelloServer {
+      // 第一个远程调用接口
+      rpc SayHello (HelloRequest) returns (HelloReply) {}
+      // 第二个远程调用接口
+      rpc GetHelloMsg (HelloRequest) returns (HelloMessage) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+      string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+      string message = 1;
+}
